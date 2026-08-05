@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — PeakScore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @view-transition{
+    navigation: auto;
+  }
+  ::view-transition-old(root){animation-duration:.35s;}
+  ::view-transition-new(root){animation-duration:.35s;}
+
+  @keyframes ps-fade-in{from{opacity:0;}to{opacity:1;}}
+
+  :root{
+    --navy:#0B1D3A;
+    --navy-soft:#16294A;
+    --gold:#F5A623;
+    --teal:#2DD4BF;
+    --teal-dark:#0F9488;
+    --bg:#F8F7F4;
+    --card:#FFFFFF;
+    --text:#1A1A1A;
+    --muted:#5B6472;
+    --line:#E7E3DA;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    animation:ps-fade-in .35s ease-out;
+  }
+  h1,h2,h3,h4,.font-display{
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    color:var(--navy);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal-dark);
+  }
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(248,247,244,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:14px;padding-bottom:14px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;color:var(--navy);text-decoration:none;}
+  .logo svg{height:30px;width:auto;}
+  .navlinks{display:flex;gap:26px;align-items:center;}
+  .navlinks a{
+    text-decoration:none;color:var(--navy);font-size:14.5px;font-weight:500;
+    padding:6px 2px;border-bottom:2px solid transparent;
+  }
+  .navlinks a:hover{border-bottom-color:var(--gold);}
+  .navcta{display:flex;align-items:center;gap:14px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    font-weight:600;font-size:14.5px;
+    padding:11px 20px;border-radius:999px;
+    text-decoration:none;cursor:pointer;border:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--gold);color:var(--navy);box-shadow:0 6px 16px -6px rgba(245,166,35,.55);}
+  .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy);}
+  .btn-light{background:var(--navy);color:#fff;}
+  .langtoggle{
+    display:flex;border:1.5px solid var(--navy);border-radius:999px;overflow:hidden;font-size:13px;font-weight:600;font-family:'Space Grotesk',sans-serif;
+  }
+  .langtoggle button{
+    background:transparent;border:none;padding:6px 12px;cursor:pointer;color:var(--navy);
+  }
+  .langtoggle button.active{background:var(--navy);color:#fff;}
+  .mobile-hide{display:flex;}
+  @media (max-width:860px){
+    .navlinks{display:none;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{position:relative;overflow:hidden;padding:84px 0 70px;}
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(600px 300px at 85% -10%, rgba(45,212,191,.16), transparent 60%),
+      radial-gradient(500px 260px at 10% 110%, rgba(245,166,35,.14), transparent 60%);
+  }
+  .peaks{position:absolute;left:0;right:0;bottom:-1px;height:120px;z-index:0;opacity:.9;}
+  .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
+  @media (max-width:900px){.hero-inner{grid-template-columns:1fr;}}
+  .hero h1{font-size:clamp(32px,4.6vw,52px);line-height:1.08;font-weight:700;}
+  .hero h1 span{color:var(--teal-dark);}
+  .hero p.lead{margin-top:18px;font-size:17.5px;color:var(--muted);max-width:46ch;}
+  .hero-ctas{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-note{margin-top:16px;font-size:13.5px;color:var(--muted);}
+
+  .hero-card{
+    background:var(--navy);border-radius:24px;padding:26px;color:#fff;
+    box-shadow:0 30px 60px -25px rgba(11,29,58,.5);
+  }
+  .hero-card .row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);}
+  .hero-card .row:last-child{border-bottom:none;}
+  .hero-card .row b{font-family:'Space Grotesk',sans-serif;color:var(--teal);}
+
+  /* ===== SECTION generic ===== */
+  section{padding:76px 0;}
+  section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .section-head{max-width:640px;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(26px,3.2vw,36px);margin-top:10px;}
+  .section-head p{color:var(--muted);margin-top:12px;font-size:16px;}
+
+  /* ===== CHIFFRES CLES ===== */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  @media (max-width:800px){.stats{grid-template-columns:repeat(2,1fr);}}
+  .stat{text-align:center;padding:26px 14px;}
+  .stat svg{margin:0 auto 14px;height:34px;width:34px;color:var(--teal-dark);}
+  .stat .num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:34px;color:var(--navy);}
+  .stat .label{margin-top:6px;font-size:13.5px;color:var(--muted);}
+
+  /* ===== PROGRAMMES ===== */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media (max-width:900px){.grid3{grid-template-columns:1fr;}}
+  .prog-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px;display:flex;flex-direction:column;gap:14px;
+  }
+  .prog-card .tag{
+    align-self:flex-start;background:rgba(45,212,191,.14);color:var(--teal-dark);
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;letter-spacing:.05em;
+    padding:5px 12px;border-radius:999px;text-transform:uppercase;
+  }
+  .prog-card h3{font-size:22px;}
+  .prog-card p{color:var(--muted);font-size:14.5px;margin:0;}
+  .prog-card a.more{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;color:var(--navy);text-decoration:none;margin-top:auto;}
+  .prog-card a.more:after{content:" →";}
+
+  /* ===== HOW IT WORKS ===== */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  @media (max-width:900px){.steps{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.steps{grid-template-columns:1fr;}}
+  .step{position:relative;padding-top:8px;}
+  .step .idx{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:var(--gold);}
+  .step h4{margin-top:10px;font-size:16.5px;}
+  .step p{margin-top:6px;color:var(--muted);font-size:14px;}
+
+  /* ===== PACKS ===== */
+  .packs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media (max-width:900px){.packs{grid-template-columns:1fr;}}
+  .pack{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px;display:flex;flex-direction:column;
+  }
+  .pack.elite{background:var(--navy);border:none;position:relative;color:#fff;}
+  .pack.elite h3{color:#fff;}
+  .pack.elite .from{color:rgba(255,255,255,.65);}
+  .pack.elite li{color:rgba(255,255,255,.92);}
+  .pack.elite li svg{color:var(--teal);}
+  .pack.elite .pack-pricebox{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);}
+  .pack.elite .ppb-label{color:rgba(255,255,255,.55);}
+  .pack.elite .ppb-exam{color:rgba(255,255,255,.65);}
+  .pack.elite .ppb-price{color:#fff;}
+  .pack.elite .ppb-price small{color:rgba(255,255,255,.55);}
+  .pack.elite .badge{
+    position:absolute;top:-13px;left:26px;background:var(--gold);color:var(--navy);
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.05em;
+    padding:5px 12px;border-radius:999px;text-transform:uppercase;
+  }
+  .pack h3{font-size:21px;}
+  .pack .from{margin-top:6px;font-size:13.5px;color:var(--muted);}
+  .pack ul{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:11px;flex:1;}
+  .pack li{display:flex;gap:10px;font-size:14px;color:var(--text);}
+  .pack li svg{flex:none;height:17px;width:17px;color:var(--teal-dark);margin-top:2px;}
+  .pack .btn{margin-top:22px;width:100%;}
+
+  .pack-pricebox{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:18px;}
+  .pack.elite .pack-pricebox{background:rgba(245,166,35,.08);border-color:rgba(245,166,35,.35);}
+  .ppb-label{font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .ppb-cols{display:flex;justify-content:space-between;}
+  .ppb-col{display:flex;flex-direction:column;align-items:center;flex:1;}
+  .ppb-exam{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.03em;}
+  .ppb-price{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin-top:5px;}
+  .ppb-price small{font-size:10px;font-weight:600;color:var(--muted);margin-left:2px;}
+  .price-note{margin-top:14px;font-size:13px;color:var(--muted);}
+
+  /* ===== PROGRESS REWARD ===== */
+  .reward{
+    background:var(--navy);color:#fff;border-radius:28px;padding:48px;
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  }
+  @media (max-width:860px){.reward{grid-template-columns:1fr;padding:32px 24px;}}
+  .reward h2{color:#fff;}
+  .reward p{color:rgba(255,255,255,.75);margin-top:14px;font-size:15.5px;}
+  .reward-table{width:100%;border-collapse:collapse;background:rgba(255,255,255,.06);border-radius:14px;overflow:hidden;}
+  .reward-table th,.reward-table td{padding:12px 14px;text-align:center;font-size:13.5px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .reward-table th{font-family:'Space Grotesk',sans-serif;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:rgba(255,255,255,.6);font-weight:600;}
+  .reward-table td:first-child,.reward-table th:first-child{text-align:left;}
+  .reward-table td.disc{color:var(--teal);font-family:'Space Grotesk',sans-serif;font-weight:700;}
+  .reward-table tr:last-child td{border-bottom:none;}
+
+  /* ===== BOOKING ===== */
+  .book{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch;}
+  @media (max-width:900px){.book{grid-template-columns:1fr;}}
+  .book-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;}
+  .avail{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:14px;color:var(--teal-dark);font-weight:600;}
+  .avail svg{height:18px;width:18px;}
+
+  /* ===== MINI CALENDAR ===== */
+  .mini-cal{border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:20px;background:var(--bg);}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+  .cal-head span{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;color:var(--navy);text-transform:capitalize;}
+  .cal-head button{background:none;border:1px solid var(--line);border-radius:8px;width:28px;height:28px;cursor:pointer;font-size:15px;color:var(--navy);}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+  .cal-dow{text-align:center;font-size:11px;color:var(--muted);font-weight:600;padding:4px 0;}
+  .cal-day{
+    aspect-ratio:1;border:none;background:#fff;border-radius:8px;font-size:13px;cursor:pointer;color:var(--text);
+  }
+  .cal-day:hover:not(:disabled){background:rgba(45,212,191,.18);}
+  .cal-day.sel{background:var(--navy);color:#fff;font-weight:600;}
+  .cal-day.past{visibility:hidden;}
+  .cal-day:disabled{color:var(--line);cursor:default;}
+  .cal-slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .cal-slot-btn{
+    border:1.5px solid var(--navy);background:#fff;color:var(--navy);
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12.5px;
+    padding:7px 12px;border-radius:999px;cursor:pointer;
+  }
+  .cal-slot-btn:hover{background:var(--navy);color:#fff;}
+  .cal-confirm{
+    margin-top:14px;background:rgba(45,212,191,.14);border:1px solid var(--teal);
+    border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--navy);
+  }
+  .cal-confirm b{font-family:'Space Grotesk',sans-serif;}
+
+  /* ===== RESULTATS ===== */
+  .results{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media (max-width:900px){.results{grid-template-columns:1fr;}}
+  .result-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;}
+  .rc-top{display:flex;justify-content:space-between;align-items:center;}
+  .rc-pill{background:var(--bg);border:1px solid var(--line);color:var(--muted);font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;}
+  .rc-scale{font-size:12px;color:var(--muted);}
+  .rc-title{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--navy);font-size:17px;margin-top:14px;}
+  .rc-metric{margin-top:18px;}
+  .rc-metric-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);}
+  .rc-metric-row svg{height:14px;width:14px;margin-right:5px;vertical-align:-2px;color:var(--muted);}
+  .rc-metric-value{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--navy);font-size:15px;}
+  .rc-bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:8px;}
+  .rc-bar-fill{height:100%;background:var(--teal);border-radius:99px;}
+  .rc-bar-fill.gold{background:var(--gold);}
+  .rc-bar-note{font-size:11px;color:var(--muted);margin-top:5px;}
+  .rc-boost{margin-top:16px;background:linear-gradient(135deg, rgba(245,166,35,.14), rgba(45,212,191,.12));border:1px solid rgba(245,166,35,.3);border-radius:12px;padding:14px 16px;}
+  .rc-boost-head{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-weight:600;}
+  .rc-boost-head svg{height:14px;width:14px;color:var(--gold);}
+  .rc-boost-main{margin-top:6px;display:flex;align-items:baseline;gap:6px;}
+  .rc-boost-num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:var(--navy);}
+  .rc-boost-unit{font-size:13px;color:var(--muted);font-weight:600;}
+  .rc-boost-range{margin-top:4px;font-size:12.5px;color:var(--teal-dark);font-weight:700;font-family:'Space Grotesk',sans-serif;}
+  .results-note{margin-top:20px;font-size:12px;color:var(--muted);}
+  .quote{margin-top:38px;background:var(--bg);border-left:3px solid var(--gold);padding:18px 22px;font-style:italic;color:var(--navy);border-radius:0 12px 12px 0;font-size:15px;}
+  .quote cite{display:block;margin-top:8px;font-style:normal;font-size:13px;color:var(--muted);}
+
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:38px;}
+  @media (max-width:900px){.testi-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:620px){.testi-grid{grid-template-columns:1fr;}}
+  .testi-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;}
+  .stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:10px;}
+  .testi-q{font-style:italic;color:var(--text);font-size:14px;line-height:1.6;flex:1;}
+  .testi-q:before{content:"“";color:var(--gold);font-size:20px;font-style:normal;}
+  .testi-meta{border-top:1px solid var(--line);margin-top:16px;padding-top:12px;}
+  .testi-name{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--navy);font-size:14px;}
+  .testi-score{font-size:12.5px;color:var(--teal-dark);font-weight:600;margin-top:2px;}
+  .testi-pack{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:2px;}
+
+  /* ===== FAQ ===== */
+  details{border-bottom:1px solid var(--line);padding:18px 0;}
+  summary{cursor:pointer;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;}
+  summary::-webkit-details-marker{display:none;}
+  summary:after{content:"+";font-size:22px;color:var(--gold);}
+  details[open] summary:after{content:"–";}
+  details p{margin-top:12px;color:var(--muted);font-size:14.5px;}
+
+  /* ===== ABOUT ===== */
+  .about{display:grid;grid-template-columns:.5fr 1fr;gap:40px;align-items:center;}
+  @media (max-width:860px){.about{grid-template-columns:1fr;}}
+  .avatar{
+    width:150px;height:150px;border-radius:50%;background:var(--navy);
+    display:flex;align-items:center;justify-content:center;margin:0 auto;
+  }
+  .avatar svg{height:70px;width:70px;color:var(--teal);}
+  .about-text p{color:var(--muted);font-size:15.5px;margin-top:12px;}
+
+  /* ===== FOOTER CONTACT BLOCK ===== */
+  .foot-contact{padding:26px 0;border-bottom:1px solid rgba(255,255,255,.14);}
+  .foot-social{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;}
+  .foot-social a{
+    display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.85);text-decoration:none;
+    font-size:13px;font-weight:500;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+    padding:8px 14px;border-radius:999px;
+  }
+  .foot-social a:hover{background:rgba(255,255,255,.16);}
+  .foot-social svg{height:16px;width:16px;color:var(--teal);}
+  .foot-locations{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;}
+  .foot-locations span{font-size:12.5px;color:rgba(255,255,255,.55);}
+
+  /* ===== REVIEW FORM ===== */
+  .review-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:32px;margin-top:44px;max-width:640px;
+  }
+  .review-card h3{font-size:20px;}
+  .review-card > p{color:var(--muted);font-size:14px;margin-top:8px;}
+  .field{margin-top:18px;}
+  .field label{display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:var(--navy);margin-bottom:6px;}
+  .field input,.field select,.field textarea{
+    width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;
+    font-family:'Inter',sans-serif;font-size:14px;color:var(--text);background:#fff;
+  }
+  .field textarea{resize:vertical;min-height:90px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:520px){.field-row{grid-template-columns:1fr;}}
+  .star-picker{display:flex;gap:6px;}
+  .star-picker button{background:none;border:none;font-size:26px;color:var(--line);cursor:pointer;line-height:1;padding:0;}
+  .star-picker button.on{color:var(--gold);}
+  .review-submitted{
+    margin-top:18px;background:rgba(45,212,191,.14);border:1px solid var(--teal);
+    border-radius:12px;padding:16px 18px;font-size:14px;color:var(--navy);display:none;
+  }
+  .review-submitted.show{display:block;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy);color:rgba(255,255,255,.7);padding:50px 0 28px;font-size:13.5px;}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.14);}
+  .foot-top .logo{color:#fff;}
+  .foot-links{display:flex;gap:34px;flex-wrap:wrap;}
+  .foot-links a{text-decoration:none;color:rgba(255,255,255,.7);}
+  .foot-bottom{padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 90 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="pg" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#0B1D3A"/><stop offset="100%" stop-color="#2DD4BF"/>
+        </linearGradient></defs>
+        <rect x="6" y="34" width="13" height="20" rx="2" fill="#1F3A63"/>
+        <rect x="24" y="24" width="13" height="30" rx="2" fill="#14294A"/>
+        <rect x="42" y="12" width="13" height="42" rx="2" fill="url(#pg)"/>
+        <circle cx="48.5" cy="6" r="6" fill="#F5A623"/>
+      </svg>
+      PeakScore
+    </a>
+    <div class="navlinks">
+      <a href="programmes.html" data-i18n="nav_programs">Programmes</a>
+      <a href="tarifs.html" data-i18n="nav_packs">Tarifs</a>
+      <a href="resultats.html" data-i18n="nav_results">Témoignages</a>
+      <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+      <a href="apropos.html" data-i18n="nav_about">À propos</a>
+    </div>
+    <div class="navcta">
+      <div class="langtoggle" role="group" aria-label="Langue / Language">
+        <button id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="reservation.html" class="btn btn-primary mobile-hide" data-i18n="nav_cta">Réserver un appel</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ A PROPOS ============ -->
+<section class="alt" id="apropos">
+  <div class="wrap">
+    <div class="about">
+      <div class="avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      </div>
+      <div class="about-text">
+        <p class="eyebrow" data-i18n="about_eyebrow">Le fondateur</p>
+        <h2 style="margin-top:8px;" data-i18n="about_title">Un tuteur, une spécialité : les maths</h2>
+        <p data-i18n="about_p1">Le fondateur de PeakScore enseigne personnellement la section mathématiques du SAT et du GRE, ainsi que les sections Quantitative Reasoning et Data Insights du GMAT, avec 3 ans d'expérience d'accompagnement individuel sur ces trois examens.</p>
+        <p data-i18n="about_p2">Chaque élève suit le même programme complet — méthodologie de base et stratégies avancées — quel que soit le pack choisi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:10px;">
+          <svg viewBox="0 0 90 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="6" y="34" width="13" height="20" rx="2" fill="rgba(255,255,255,.5)"/>
+            <rect x="24" y="24" width="13" height="30" rx="2" fill="rgba(255,255,255,.7)"/>
+            <rect x="42" y="12" width="13" height="42" rx="2" fill="#2DD4BF"/>
+            <circle cx="48.5" cy="6" r="6" fill="#F5A623"/>
+          </svg>
+          PeakScore
+        </a>
+        <p style="max-width:34ch;margin-top:10px;" data-i18n="foot_tagline">Accompagnement maths individuel pour SAT, GMAT et GRE.</p>
+      </div>
+      <div class="foot-links">
+        <a href="programmes.html" data-i18n="nav_programs">Programmes</a>
+        <a href="tarifs.html" data-i18n="nav_packs">Tarifs</a>
+        <a href="resultats.html" data-i18n="nav_results">Témoignages</a>
+        <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+        <a href="apropos.html" data-i18n="nav_about">À propos</a>
+      </div>
+    </div>
+
+    <div class="foot-contact">
+      <p class="eyebrow" style="color:var(--teal);" data-i18n="foot_contact_eyebrow">Nous contacter</p>
+      <div class="foot-social">
+        <!-- Remplace les liens par les vrais comptes/coordonnées PeakScore -->
+        <a href="https://wa.me/2126XXXXXXXX">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:contact@peakscore.ma">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Email
+        </a>
+        <a href="https://instagram.com/peakscore.ma" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-4 4-3-3-6 5"/></svg>
+          Instagram
+        </a>
+        <a href="https://linkedin.com/company/peakscore" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="foot-locations">
+        <span data-i18n="loc_presential">Présentiel : Rabat &amp; Casablanca</span>
+        <span data-i18n="loc_online">En ligne : partout ailleurs</span>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span data-i18n="foot_copy">© 2026 PeakScore. Tous droits réservés.</span>
+      <span data-i18n="foot_addr">Casablanca, Maroc</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+const translations = {
+  fr: {
+    nav_programs:"Programmes", nav_packs:"Tarifs", nav_results:"Témoignages", nav_faq:"FAQ", nav_about:"À propos", nav_cta:"Réserver un appel",
+    hero_eyebrow:"Accompagnement maths individuel — SAT · GMAT · GRE",
+    hero_title:'Grimpe vers ton <span>meilleur score</span> en maths.',
+    hero_lead:"PeakScore accompagne individuellement les candidats au SAT, au GMAT et au GRE sur la section mathématiques : méthodologie complète, mock tests officiels, et un suivi qui s'adapte à ton objectif.",
+    hero_cta1:"Réserver un appel diagnostique gratuit", hero_cta2:"Voir les packs",
+    hero_note:"Disponible 7j/7, de 9h à 21h.",
+    hero_card1:"Accompagnement", hero_card1v:"100% individuel",
+    hero_card2:"Tests", hero_card2v:"Mock tests officiels",
+    hero_card3:"Focus", hero_card3v:"Section maths",
+    hero_card4:"Suivi", hero_card4v:"Progress Reward",
+    stats_eyebrow:"Le centre en chiffres", stats_title:"Nos chiffres clés",
+    stats1_unit:"ans", stats1_label:"d'expérience en accompagnement maths SAT/GMAT/GRE",
+    stats2_label:"élèves accompagnés",
+    stats3_label:"points de progression moyenne à la section Maths",
+    stats4_label:"accompagnement individuel",
+    prog_eyebrow:"Nos programmes", prog_title:"Un accompagnement maths, trois examens",
+    prog_lead:"Chaque programme couvre uniquement la section mathématiques/quantitative — méthodologie de base et stratégies avancées, sans partie verbale, lecture ou écrite.",
+    prog_sat_h:"Section Math du SAT", prog_sat_p:"Algèbre, géométrie, données et calcul mental rapide — la méthode pour viser une section Math au-dessus de 700.",
+    prog_gmat_h:"Quantitative Reasoning &amp; Data Insights (GMAT Focus)", prog_gmat_p:"Raisonnement quantitatif et Data Insights orientés business : arithmétique, algèbre, interprétation de données et analyse multi-sources sous contrainte de temps.",
+    prog_gre_h:"Quantitative Reasoning (GRE)", prog_gre_p:"Résolution de problèmes, comparaisons quantitatives et data analysis pour viser un score compétitif en grad school.",
+    prog_more:"Voir les packs",
+    how_eyebrow:"Le parcours", how_title:"Comment ça marche",
+    how1_h:"Appel diagnostique gratuit", how1_p:"15–20 min pour évaluer ton niveau et ton objectif.",
+    how2_h:"On évalue ton niveau", how2_p:"Un mock test de référence pour mesurer ton point de départ.",
+    how3_h:"Pack personnalisé", how3_p:"On te recommande le pack adapté à ton objectif.",
+    how4_h:"Tu progresses, tu es récompensé", how4_p:"Chaque progrès mesuré ouvre une réduction sur la suite.",
+    packs_eyebrow:"Accompagnement 100% individuel", packs_title:"Nos packs",
+    packs_lead:"Le programme complet (méthodologie + stratégies avancées) est identique dans les trois packs. Ce qui évolue, c'est la garantie, la réactivité et l'accompagnement — jamais le contenu enseigné.",
+    pack1_h:"Starter", pack1_from:"Idéal pour démarrer sereinement",
+    pack1_hours:"10h d'accompagnement incluses", pack1_f1:"Accompagnement 1-on-1, programme complet maths", pack1_f2:"3 mock tests officiels inclus",
+    pack1_f3:"Accès à la bibliothèque de ressources", pack1_f4:"Messagerie directe avec ton tuteur",
+    pack2_h:"Advanced", pack2_from:"Pour un suivi plus rapproché",
+    pack2_hours:"20h d'accompagnement incluses", pack2_f1:"Tout Starter, inclus", pack2_f2:"5 mock tests + plan de révision mis à jour",
+    pack2_f3:"Créneaux prioritaires, soir et week-end", pack2_f4:"Réponse garantie sous 24h",
+    pack3_badge:"Le plus complet", pack3_h:"Elite", pack3_from:"Pour viser un score cible garanti",
+    pack3_hours:"30h d'accompagnement incluses", pack3_f1:"Tout Advanced, inclus", pack3_f2:"Garantie de score : sessions offertes jusqu'à l'objectif",
+    pack3_f3:"Accompagnement candidature + relecture d'essai", pack3_f4:"Simulation complète le jour J",
+    pack_cta:"Commencer par un appel",
+    ppb_label:"Fourchettes indicatives", price_note:"Tarifs indicatifs à partir de. Le prix exact et le pack recommandé sont confirmés lors de ton appel diagnostique gratuit.",
+    reward_eyebrow:"Progress Reward", reward_title:"Ta progression te fait économiser",
+    reward_lead:"Avant ton premier pack, tu passes un mock test de référence. À la fin de chaque pack, un nouveau mock test mesure ta progression réelle en points, sur l'échelle de ton examen.",
+    reward_th_tier:"Palier", reward_th_disc:"Réduction", reward_row1:"Palier 1", reward_row2:"Palier 2", reward_row3:"Palier 3",
+    book_eyebrow:"Première étape", book_title:"Réserve ton appel diagnostique",
+    book_lead:"Gratuit, 15 à 20 minutes, pour évaluer ton niveau et te recommander le bon pack.",
+    book_card1_h:"Appel diagnostique gratuit", book_card1_p:"On discute de ton objectif, ton examen cible et ta date d'examen.",
+    book_avail:"Disponible 7j/7, de 9h à 21h",
+    res_eyebrow:"Résultats par examen", res_title:"Un même niveau d'excellence, trois échelles différentes", testi_subhead:"Témoignages",
+    res_lead:"SAT, GMAT et GRE n'utilisent pas la même échelle de score — voici la même histoire racontée avec des chiffres propres à chaque examen.",
+    rc_scale_sat:"Échelle 200–800", rc_scale_gmat:"Échelle 60–90", rc_scale_gre:"Échelle 130–170",
+    rc_exceeded:"+80 élèves ont dépassé", rc_progress:"Progression moyenne", rc_points:"points",
+    results_note:"Chiffres indicatifs représentatifs du track record du centre. À remplacer par les données réelles avant mise en ligne définitive.",
+    t1_q:"Je stagnais depuis des mois sur les mêmes erreurs bêtes. Le diagnostic a cerné direct où ça coinçait en algèbre, et au bout de quelques semaines ça a enfin débloqué.",
+    t2_q:"Franchement le 100% individuel ça change tout. Mon tuteur repérait mes erreurs qui revenaient tout le temps et changeait la séance d'après en fonction. J'avais la garantie de score en tête au cas où, mais j'en ai pas eu besoin au final.",
+    t3_q:"En plus des maths, l'aide pour le dossier de candidature m'a vraiment aidée à avoir quelque chose de cohérent. Sérieux du début à la fin, je recommande.",
+    t4_q:"Le Progress Reward c'est pas juste un argument marketing, j'ai eu une vraie réduction sur mon deuxième pack après le premier mock. Ça motive à fond, j'avoue.",
+    t5_q:"Même tard le soir j'avais une réponse rapide. Sur un exam aussi chargé que le GMAT, ne jamais rester bloqué sur un truc ça change beaucoup.",
+    t6_q:"La méthode pour les comparaisons quantitatives est nickel. J'ai gagné un temps fou avec les astuces de timing.",
+    t_pack_adv:"Pack Advanced", t_pack_elite:"Pack Elite", t_pack_startadv:"Pack Starter puis Advanced",
+    testi_note:"Témoignages d'exemple — à remplacer par tes vrais retours élèves avant mise en ligne.",
+    review_title:"Toi aussi, laisse ton avis", review_lead:"Élève PeakScore ? Partage ton expérience — ton avis pourra être publié ici, avec les autres témoignages.",
+    review_name_l:"Prénom + initiale", review_exam_l:"Examen", review_pack_l:"Pack suivi", review_score_l:"Score avant → après",
+    review_rating_l:"Ta note", review_comment_l:"Ton avis", review_comment_ph:"Raconte ton expérience avec PeakScore...", review_submit:"Envoyer mon avis",
+    faq_eyebrow:"Questions fréquentes", faq_title:"FAQ",
+    faq1_q:"Est-ce que vous couvrez aussi le verbal / l'écrit ?", faq1_a:"Non. PeakScore est spécialisé exclusivement dans la section mathématiques/quantitative du SAT et du GRE, et dans les sections Quantitative Reasoning et Data Insights du GMAT — jamais le verbal ni l'écrit.",
+    faq3_q:"Comment fonctionne la réduction Progress Reward ?", faq3_a:"Ta progression est mesurée en points gagnés entre ton score de référence et ton dernier mock test, sur l'échelle propre à ton examen (SAT, GRE ou GMAT) — plus tu gagnes de points, plus la réduction sur le pack suivant est importante. Voir le tableau des paliers ci-dessus.",
+    faq4_q:"L'appel diagnostique est-il vraiment gratuit ?", faq4_a:"Oui, 15 à 20 minutes, sans engagement, pour évaluer ton niveau et te recommander le pack adapté.",
+    faq_defs_q:"C'est quoi le SAT, le GMAT et le GRE ?", faq_defs_a:"Trois examens standardisés utilisés dans les admissions académiques. Le <b>SAT</b> est utilisé pour l'admission en licence (bachelor) dans les universités américaines, principalement par des lycéens. Le <b>GMAT</b> est utilisé pour l'admission en MBA et dans d'autres masters en business school. Le <b>GRE</b> est utilisé pour l'admission en master ou doctorat, dans la plupart des filières, aux États-Unis et dans de nombreux pays.",
+    faq5_q:"En quoi un bon score au SAT, au GMAT ou au GRE fait vraiment la différence ?", faq5_a:"Un bon score pèse directement dans le dossier : au SAT il conditionne l'accès aux universités les plus sélectives et l'obtention de bourses au mérite ; au GMAT il influence l'admission dans les meilleurs MBA et ton profil salarial à la sortie ; au GRE il conditionne l'accès aux masters/doctorats et aux financements de recherche. Dans les trois cas, quelques dizaines de points peuvent changer la liste des écoles accessibles.",
+    foot_contact_eyebrow:"Nous contacter",
+    loc_presential:"Présentiel : Rabat &amp; Casablanca", loc_online:"En ligne : partout ailleurs",
+    about_eyebrow:"Le fondateur", about_title:"Un tuteur, une spécialité : les maths",
+    about_p1:"Le fondateur de PeakScore enseigne personnellement la section mathématiques du SAT et du GRE, ainsi que les sections Quantitative Reasoning et Data Insights du GMAT, avec 3 ans d'expérience d'accompagnement individuel sur ces trois examens.",
+    about_p2:"Chaque élève suit le même programme complet — méthodologie de base et stratégies avancées — quel que soit le pack choisi.",
+    foot_tagline:"Accompagnement maths individuel pour SAT, GMAT et GRE.",
+    foot_copy:"© 2026 PeakScore. Tous droits réservés.", foot_addr:"Casablanca, Maroc"
+  },
+  en: {
+    nav_programs:"Programs", nav_packs:"Pricing", nav_results:"Testimonials", nav_faq:"FAQ", nav_about:"About", nav_cta:"Book a call",
+    hero_eyebrow:"1-on-1 math tutoring — SAT · GMAT · GRE",
+    hero_title:'Climb toward your <span>best math score</span>.',
+    hero_lead:"PeakScore tutors SAT, GMAT, and GRE candidates one-on-one on the math section: full methodology, official mock tests, and support that adapts to your goal.",
+    hero_cta1:"Book a free diagnostic call", hero_cta2:"See the packs",
+    hero_note:"Open 7 days a week, 9am–9pm.",
+    hero_card1:"Tutoring", hero_card1v:"100% one-on-one",
+    hero_card2:"Testing", hero_card2v:"Official mock tests",
+    hero_card3:"Focus", hero_card3v:"Math section",
+    hero_card4:"Tracking", hero_card4v:"Progress Reward",
+    stats_eyebrow:"The center in numbers", stats_title:"Our key numbers",
+    stats1_unit:"years", stats1_label:"of experience tutoring SAT/GMAT/GRE math",
+    stats2_label:"students tutored",
+    stats3_label:"average point improvement on the Math section",
+    stats4_label:"one-on-one tutoring",
+    prog_eyebrow:"Our programs", prog_title:"One math tutor, three exams",
+    prog_lead:"Each program covers only the math/quantitative section — core methodology and advanced strategies, no verbal, reading, or writing.",
+    prog_sat_h:"SAT Math section", prog_sat_p:"Algebra, geometry, data, and fast mental math — the method to aim for a Math section above 700.",
+    prog_gmat_h:"Quantitative Reasoning &amp; Data Insights (GMAT Focus)", prog_gmat_p:"Business-oriented quantitative reasoning and Data Insights: arithmetic, algebra, data interpretation, and multi-source analysis under time pressure.",
+    prog_gre_h:"Quantitative Reasoning (GRE)", prog_gre_p:"Problem solving, quantitative comparisons, and data analysis to aim for a competitive grad-school score.",
+    prog_more:"See the packs",
+    how_eyebrow:"The journey", how_title:"How it works",
+    how1_h:"Free diagnostic call", how1_p:"15–20 min to assess your level and goal.",
+    how2_h:"We assess your level", how2_p:"A baseline mock test to measure your starting point.",
+    how3_h:"Personalized pack", how3_p:"We recommend the pack that fits your goal.",
+    how4_h:"You progress, you're rewarded", how4_p:"Every measured improvement unlocks a discount going forward.",
+    packs_eyebrow:"100% one-on-one tutoring", packs_title:"Our packs",
+    packs_lead:"The full curriculum (methodology + advanced strategies) is identical across all three packs. What changes is the guarantee, responsiveness, and support — never the content taught.",
+    pack1_h:"Starter", pack1_from:"A great way to start",
+    pack1_hours:"10h of tutoring included", pack1_f1:"1-on-1 tutoring, full math curriculum", pack1_f2:"3 official mock tests included",
+    pack1_f3:"Access to the resource library", pack1_f4:"Direct messaging with your tutor",
+    pack2_h:"Advanced", pack2_from:"For closer follow-up",
+    pack2_hours:"20h of tutoring included", pack2_f1:"Everything in Starter", pack2_f2:"5 mock tests + updated revision plan",
+    pack2_f3:"Priority slots, evenings and weekends", pack2_f4:"24h response guarantee",
+    pack3_badge:"Most complete", pack3_h:"Elite", pack3_from:"For a guaranteed target score",
+    pack3_hours:"30h of tutoring included", pack3_f1:"Everything in Advanced", pack3_f2:"Score guarantee: free sessions until you hit your target",
+    pack3_f3:"Admissions support + essay review", pack3_f4:"Full exam-day simulation",
+    pack_cta:"Start with a call",
+    ppb_label:"Indicative ranges", price_note:"Starting-from prices. The exact price and recommended pack are confirmed during your free diagnostic call.",
+    reward_eyebrow:"Progress Reward", reward_title:"Your progress saves you money",
+    reward_lead:"Before your first pack, you take a baseline mock test. At the end of each pack, a new mock test measures your real point improvement, on your exam's scale.",
+    reward_th_tier:"Tier", reward_th_disc:"Discount", reward_row1:"Tier 1", reward_row2:"Tier 2", reward_row3:"Tier 3",
+    book_eyebrow:"First step", book_title:"Book your diagnostic call",
+    book_lead:"Free, 15 to 20 minutes, to assess your level and recommend the right pack.",
+    book_card1_h:"Free diagnostic call", book_card1_p:"We'll discuss your goal, target exam, and exam date.",
+    book_avail:"Open 7 days a week, 9am–9pm",
+    res_eyebrow:"Results by exam", res_title:"Same level of excellence, three different scales", testi_subhead:"Testimonials",
+    res_lead:"SAT, GMAT, and GRE don't share the same scoring scale — here's the same story told with numbers proportional to each exam.",
+    rc_scale_sat:"Scale 200–800", rc_scale_gmat:"Scale 60–90", rc_scale_gre:"Scale 130–170",
+    rc_exceeded:"80+ students scored above", rc_progress:"Average improvement", rc_points:"points",
+    results_note:"Indicative figures representative of the center's track record. Replace with real data before going fully live.",
+    t1_q:"I was stuck on the same mistakes for months. The diagnostic pinpointed exactly where I was struggling with algebra, and within a few weeks it finally clicked.",
+    t2_q:"Honestly, the 1-on-1 format changes everything. My tutor caught my recurring mistakes and adjusted the next session around them. I had the score guarantee in the back of my mind just in case, but didn't end up needing it.",
+    t3_q:"Beyond the math, the admissions help really got my application into shape. Solid from start to finish.",
+    t4_q:"Progress Reward isn't just a marketing line — I got a real discount on my second pack right after my first mock. Honestly pretty motivating.",
+    t5_q:"Even late at night I'd get a quick reply. On an exam as dense as the GMAT, never being stuck really makes a difference.",
+    t6_q:"The method for quantitative comparisons is spot on. Saved me a ton of time with the timing tricks.",
+    t_pack_adv:"Advanced Pack", t_pack_elite:"Elite Pack", t_pack_startadv:"Starter then Advanced Pack",
+    testi_note:"Example testimonials — replace with your real student feedback before going live.",
+    review_title:"Leave your own review", review_lead:"PeakScore student? Share your experience — your review could be published here, alongside the others.",
+    review_name_l:"First name + initial", review_exam_l:"Exam", review_pack_l:"Pack taken", review_score_l:"Score before → after",
+    review_rating_l:"Your rating", review_comment_l:"Your review", review_comment_ph:"Tell us about your experience with PeakScore...", review_submit:"Send my review",
+    faq_eyebrow:"Frequently asked questions", faq_title:"FAQ",
+    faq1_q:"Do you also cover verbal / writing?", faq1_a:"No. PeakScore specializes exclusively in the math/quantitative section of the SAT and GRE, and in the Quantitative Reasoning and Data Insights sections of the GMAT — never verbal or writing.",
+    faq3_q:"How does the Progress Reward discount work?", faq3_a:"Your improvement is measured in points gained between your baseline score and your latest mock test, on the scale specific to your exam (SAT, GRE, or GMAT) — the more points you gain, the bigger the discount on your next pack. See the tier table above.",
+    faq4_q:"Is the diagnostic call really free?", faq4_a:"Yes, 15 to 20 minutes, no commitment, to assess your level and recommend the right pack.",
+    faq_defs_q:"What are the SAT, GMAT, and GRE?", faq_defs_a:"Three standardized tests used in academic admissions. The <b>SAT</b> is used for undergraduate admission at US universities, mainly by high school students. The <b>GMAT</b> is used for admission to MBA and other business school master's programs. The <b>GRE</b> is used for admission to master's and PhD programs, across most fields, in the US and many other countries.",
+    faq5_q:"How does a strong SAT, GMAT, or GRE score actually make a difference?", faq5_a:"A strong score carries real weight: on the SAT it shapes access to the most selective universities and merit scholarships; on the GMAT it influences admission to top MBA programs and your future salary profile; on the GRE it shapes access to master's/PhD programs and research funding. In all three cases, a few dozen points can change which schools are within reach.",
+    foot_contact_eyebrow:"Get in touch",
+    loc_presential:"In person: Rabat &amp; Casablanca", loc_online:"Online: everywhere else",
+    about_eyebrow:"The founder", about_title:"One tutor, one specialty: math",
+    about_p1:"PeakScore's founder personally teaches the math section of the SAT and GRE, as well as the Quantitative Reasoning and Data Insights sections of the GMAT, with 3 years of experience tutoring students one-on-one on these three exams.",
+    about_p2:"Every student follows the same full curriculum — core methodology and advanced strategies — regardless of the pack chosen.",
+    foot_tagline:"One-on-one math tutoring for the SAT, GMAT, and GRE.",
+    foot_copy:"© 2026 PeakScore. All rights reserved.", foot_addr:"Casablanca, Morocco"
+  }
+};
+
+let currentLang = 'fr';
+const calRenders = [];
+
+function setLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    const val = translations[lang][key];
+    if(val !== undefined) el.innerHTML = val;
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-ph');
+    const val = translations[lang][key];
+    if(val !== undefined) el.setAttribute('placeholder', val);
+  });
+  calRenders.forEach(fn=>fn());
+}
+
+/* ===== Mini booking calendar (front-end demo only — swap for a real Calendly
+   embed or your booking backend to actually store reservations) ===== */
+function buildCalendar(prefix){
+  const state = { date:new Date() };
+  const monthEl = document.getElementById(prefix+'-month');
+  const gridEl  = document.getElementById(prefix+'-grid');
+  const slotsEl = document.getElementById(prefix+'-slots');
+  const confirmEl = document.getElementById(prefix+'-confirm');
+  const monthNames = {
+    fr:['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
+    en:['January','February','March','April','May','June','July','August','September','October','November','December']
+  };
+  const dowLabels = { fr:['L','M','M','J','V','S','D'], en:['M','T','W','T','F','S','S'] };
+
+  function render(){
+    monthEl.textContent = monthNames[currentLang][state.date.getMonth()] + ' ' + state.date.getFullYear();
+    gridEl.innerHTML = '';
+    dowLabels[currentLang].forEach(d=>{
+      const c = document.createElement('div'); c.className='cal-dow'; c.textContent=d; gridEl.appendChild(c);
+    });
+    const y = state.date.getFullYear(), m = state.date.getMonth();
+    const first = new Date(y,m,1);
+    const startDow = (first.getDay()+6)%7; // Monday = 0
+    const daysInMonth = new Date(y,m+1,0).getDate();
+    const today = new Date(); today.setHours(0,0,0,0);
+    for(let i=0;i<startDow;i++){
+      const c=document.createElement('button'); c.className='cal-day past'; c.disabled=true; gridEl.appendChild(c);
+    }
+    for(let d=1; d<=daysInMonth; d++){
+      const cellDate = new Date(y,m,d);
+      const btn = document.createElement('button');
+      btn.className='cal-day'; btn.type='button'; btn.textContent=d;
+      if(cellDate < today){ btn.disabled = true; }
+      else { btn.onclick = ()=>selectDay(cellDate, btn); }
+      gridEl.appendChild(btn);
+    }
+    slotsEl.style.display='none'; confirmEl.style.display='none';
+  }
+
+  function selectDay(date, btn){
+    gridEl.querySelectorAll('.cal-day').forEach(b=>b.classList.remove('sel'));
+    btn.classList.add('sel');
+    confirmEl.style.display='none';
+    slotsEl.style.display='flex';
+    slotsEl.innerHTML='';
+    for(let h=9; h<21; h++){
+      const s = document.createElement('button');
+      s.type='button'; s.className='cal-slot-btn'; s.textContent = h+':00';
+      s.onclick = ()=>confirmSlot(date,h);
+      slotsEl.appendChild(s);
+    }
+  }
+
+  function confirmSlot(date,h){
+    slotsEl.style.display='none';
+    const dateStr = date.toLocaleDateString(currentLang==='fr'?'fr-FR':'en-US',{weekday:'long', day:'numeric', month:'long'});
+    const label = currentLang==='fr' ? 'Créneau sélectionné : ' : 'Selected slot: ';
+    const note = currentLang==='fr'
+      ? "Démo — connecte Calendly ou ton backend pour enregistrer de vraies réservations."
+      : "Demo — connect Calendly or your backend to actually save bookings.";
+    confirmEl.style.display='block';
+    confirmEl.innerHTML = label+'<b>'+dateStr+' — '+h+':00</b><br><span style="font-size:12px;color:var(--muted);">'+note+'</span>';
+  }
+
+  document.getElementById(prefix+'-prev').onclick = ()=>{ state.date.setMonth(state.date.getMonth()-1); render(); };
+  document.getElementById(prefix+'-next').onclick = ()=>{ state.date.setMonth(state.date.getMonth()+1); render(); };
+  render();
+  calRenders.push(render);
+}
+
+if(document.getElementById('call-prev')) buildCalendar('call');
+
+/* ===== Review form (front-end demo only — connect Supabase or another
+   backend to actually store and moderate submissions) ===== */
+let rvRating = 0;
+document.querySelectorAll('#rv-stars button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    rvRating = parseInt(btn.dataset.v, 10);
+    document.querySelectorAll('#rv-stars button').forEach(b=>{
+      b.classList.toggle('on', parseInt(b.dataset.v,10) <= rvRating);
+    });
+  });
+});
+
+function submitReview(){
+  const name = document.getElementById('rv-name').value.trim();
+  const comment = document.getElementById('rv-comment').value.trim();
+  const box = document.getElementById('review-submitted');
+  if(!name || !comment || rvRating===0){
+    const msg = currentLang==='fr'
+      ? "Merci de remplir ton prénom, ta note et un commentaire avant d'envoyer."
+      : "Please fill in your name, a rating, and a comment before sending.";
+    box.textContent = msg;
+    box.style.background = 'rgba(214,69,69,.1)';
+    box.style.borderColor = '#D64545';
+    box.classList.add('show');
+    return;
+  }
+  const msg = currentLang==='fr'
+    ? "Merci " + name + " ! Ton avis a été noté. (Démo — connecte un backend pour l'enregistrer et le publier réellement.)"
+    : "Thanks " + name + "! Your review was captured. (Demo — connect a backend to actually save and publish it.)";
+  box.style.background = 'rgba(45,212,191,.14)';
+  box.style.borderColor = 'var(--teal)';
+  box.textContent = msg;
+  box.classList.add('show');
+  document.getElementById('rv-name').value='';
+  document.getElementById('rv-score').value='';
+  document.getElementById('rv-comment').value='';
+  rvRating = 0;
+  document.querySelectorAll('#rv-stars button').forEach(b=>b.classList.remove('on'));
+}
+
+</script>
+</body>
+</html>
