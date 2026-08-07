@@ -183,11 +183,6 @@
   .pack.elite .from{color:rgba(255,255,255,.65);}
   .pack.elite li{color:rgba(255,255,255,.92);}
   .pack.elite li svg{color:var(--teal);}
-  .pack.elite .pack-pricebox{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);}
-  .pack.elite .ppb-label{color:rgba(255,255,255,.55);}
-  .pack.elite .ppb-exam{color:rgba(255,255,255,.65);}
-  .pack.elite .ppb-price{color:#fff;}
-  .pack.elite .ppb-price small{color:rgba(255,255,255,.55);}
   .pack.elite .badge{
     position:absolute;top:-13px;left:26px;background:var(--gold);color:var(--navy);
     font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.05em;
@@ -200,14 +195,8 @@
   .pack li svg{flex:none;height:17px;width:17px;color:var(--teal-dark);margin-top:2px;}
   .pack .btn{margin-top:22px;width:100%;}
 
-  .pack-pricebox{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:18px;}
-  .pack.elite .pack-pricebox{background:rgba(245,166,35,.08);border-color:rgba(245,166,35,.35);}
-  .ppb-label{font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-  .ppb-cols{display:flex;justify-content:space-between;}
-  .ppb-col{display:flex;flex-direction:column;align-items:center;flex:1;}
-  .ppb-exam{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.03em;}
-  .ppb-price{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin-top:5px;}
-  .ppb-price small{font-size:10px;font-weight:600;color:var(--muted);margin-left:2px;}
+  .pack-priceinfo{margin-top:18px;font-size:13px;color:var(--muted);font-style:italic;}
+  .pack.elite .pack-priceinfo{color:rgba(255,255,255,.6);}
   .price-note{margin-top:14px;font-size:13px;color:var(--muted);}
 
   /* ===== PROGRESS REWARD ===== */
@@ -275,13 +264,9 @@
   .rc-bar-fill{height:100%;background:var(--teal);border-radius:99px;}
   .rc-bar-fill.gold{background:var(--gold);}
   .rc-bar-note{font-size:11px;color:var(--muted);margin-top:5px;}
-  .rc-boost{margin-top:16px;background:linear-gradient(135deg, rgba(245,166,35,.14), rgba(45,212,191,.12));border:1px solid rgba(245,166,35,.3);border-radius:12px;padding:14px 16px;}
-  .rc-boost-head{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-weight:600;}
-  .rc-boost-head svg{height:14px;width:14px;color:var(--gold);}
-  .rc-boost-main{margin-top:6px;display:flex;align-items:baseline;gap:6px;}
-  .rc-boost-num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:var(--navy);}
-  .rc-boost-unit{font-size:13px;color:var(--muted);font-weight:600;}
-  .rc-boost-range{margin-top:4px;font-size:12.5px;color:var(--teal-dark);font-weight:700;font-family:'Space Grotesk',sans-serif;}
+  .rc-ring-head{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-weight:600;margin-top:18px;}
+  .rc-ring-head svg{height:14px;width:14px;color:var(--gold);}
+  .rc-ring{margin-top:10px;}
   .results-note{margin-top:20px;font-size:12px;color:var(--muted);}
   .quote{margin-top:38px;background:var(--bg);border-left:3px solid var(--gold);padding:18px 22px;font-style:italic;color:var(--navy);border-radius:0 12px 12px 0;font-size:15px;}
   .quote cite{display:block;margin-top:8px;font-style:normal;font-size:13px;color:var(--muted);}
@@ -299,12 +284,20 @@
   .testi-pack{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:2px;}
 
   /* ===== FAQ ===== */
+  .faq-intro{color:var(--muted);font-size:14.5px;margin-top:10px;}
+  .faq-category{margin-top:38px;}
+  .faq-category:first-of-type{margin-top:28px;}
+  .faq-cat-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;}
   details{border-bottom:1px solid var(--line);padding:18px 0;}
-  summary{cursor:pointer;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;}
+  summary{cursor:pointer;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;}
   summary::-webkit-details-marker{display:none;}
-  summary:after{content:"+";font-size:22px;color:var(--gold);}
+  summary:after{content:"+";font-size:22px;color:var(--gold);flex:none;}
   details[open] summary:after{content:"–";}
   details p{margin-top:12px;color:var(--muted);font-size:14.5px;}
+  .faq-cta{margin-top:54px;background:var(--navy);border-radius:22px;padding:44px 30px;text-align:center;}
+  .faq-cta h3{color:#fff;font-size:22px;}
+  .faq-cta p{color:rgba(255,255,255,.7);margin-top:8px;font-size:14.5px;}
+  .faq-cta .btn{margin-top:22px;}
 
   /* ===== ABOUT ===== */
   .about{display:grid;grid-template-columns:.5fr 1fr;gap:40px;align-items:center;}
@@ -458,19 +451,19 @@
       <p class="eyebrow" style="color:var(--teal);" data-i18n="foot_contact_eyebrow">Nous contacter</p>
       <div class="foot-social">
         <!-- Remplace les liens par les vrais comptes/coordonnées PeakScore -->
-        <a href="https://wa.me/2126XXXXXXXX">
+        <a href="https://wa.me/212708352667">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
           WhatsApp
         </a>
-        <a href="mailto:contact@peakscore.ma">
+        <a href="mailto:contact@peakscore.org">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
           Email
         </a>
-        <a href="https://instagram.com/peakscore.ma" target="_blank" rel="noopener">
+        <a href="https://www.instagram.com/peakscore.ps/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-4 4-3-3-6 5"/></svg>
           Instagram
         </a>
-        <a href="https://linkedin.com/company/peakscore" target="_blank" rel="noopener">
+        <a href="https://www.linkedin.com/in/peak-score-144203428/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>
           LinkedIn
         </a>
@@ -514,12 +507,12 @@ const translations = {
     prog_gre_h:"Quantitative Reasoning (GRE)", prog_gre_p:"Résolution de problèmes, comparaisons quantitatives et data analysis pour viser un score compétitif en grad school.",
     prog_more:"Voir les packs",
     how_eyebrow:"Le parcours", how_title:"Comment ça marche",
-    how1_h:"Appel diagnostique gratuit", how1_p:"15–20 min pour évaluer ton niveau et ton objectif.",
+    how1_h:"Appel diagnostique gratuit", how1_p:"1 heure pour évaluer ton niveau et ton objectif.",
     how2_h:"On évalue ton niveau", how2_p:"Un mock test de référence pour mesurer ton point de départ.",
     how3_h:"Pack personnalisé", how3_p:"On te recommande le pack adapté à ton objectif.",
     how4_h:"Tu progresses, tu es récompensé", how4_p:"Chaque progrès mesuré ouvre une réduction sur la suite.",
     packs_eyebrow:"Accompagnement 100% individuel", packs_title:"Nos packs",
-    packs_lead:"Le programme complet (méthodologie + stratégies avancées) est identique dans les trois packs. Ce qui évolue, c'est la garantie, la réactivité et l'accompagnement — jamais le contenu enseigné.",
+    packs_lead:"Le programme complet (méthodologie + stratégies avancées) est identique dans les trois packs. Ce qui évolue, c'est la garantie, la réactivité et l'accompagnement — jamais le contenu enseigné. Le tarif, lui, est personnalisé et te sera communiqué lors de ton appel diagnostique gratuit.",
     pack1_h:"Starter", pack1_from:"Idéal pour démarrer sereinement",
     pack1_hours:"10h d'accompagnement incluses", pack1_f1:"Accompagnement 1-on-1, programme complet maths", pack1_f2:"3 mock tests officiels inclus",
     pack1_f3:"Accès à la bibliothèque de ressources", pack1_f4:"Messagerie directe avec ton tuteur",
@@ -530,12 +523,12 @@ const translations = {
     pack3_hours:"30h d'accompagnement incluses", pack3_f1:"Tout Advanced, inclus", pack3_f2:"Garantie de score : sessions offertes jusqu'à l'objectif",
     pack3_f3:"Accompagnement candidature + relecture d'essai", pack3_f4:"Simulation complète le jour J",
     pack_cta:"Commencer par un appel",
-    ppb_label:"Fourchettes indicatives", price_note:"Tarifs indicatifs à partir de. Le prix exact et le pack recommandé sont confirmés lors de ton appel diagnostique gratuit.",
+    pack_priceinfo:"Tarif communiqué lors de l'appel diagnostique", price_note:"Aucun prix n'est affiché ici : chaque tarif est calculé selon ton niveau, ton objectif et ta deadline, et t'est communiqué en détail lors de ton appel diagnostique gratuit.",
     reward_eyebrow:"Progress Reward", reward_title:"Ta progression te fait économiser",
     reward_lead:"Avant ton premier pack, tu passes un mock test de référence. À la fin de chaque pack, un nouveau mock test mesure ta progression réelle en points, sur l'échelle de ton examen.",
     reward_th_tier:"Palier", reward_th_disc:"Réduction", reward_row1:"Palier 1", reward_row2:"Palier 2", reward_row3:"Palier 3",
     book_eyebrow:"Première étape", book_title:"Réserve ton appel diagnostique",
-    book_lead:"Gratuit, 15 à 20 minutes, pour évaluer ton niveau et te recommander le bon pack.",
+    book_lead:"Gratuit, 1 heure, pour évaluer ton niveau et te recommander le bon pack.",
     book_card1_h:"Appel diagnostique gratuit", book_card1_p:"On discute de ton objectif, ton examen cible et ta date d'examen.",
     book_avail:"Disponible 7j/7, de 9h à 21h",
     res_eyebrow:"Résultats par examen", res_title:"Un même niveau d'excellence, trois échelles différentes", testi_subhead:"Témoignages",
@@ -554,12 +547,26 @@ const translations = {
     review_title:"Toi aussi, laisse ton avis", review_lead:"Élève PeakScore ? Partage ton expérience — ton avis pourra être publié ici, avec les autres témoignages.",
     review_name_l:"Prénom + initiale", review_exam_l:"Examen", review_pack_l:"Pack suivi", review_score_l:"Score avant → après",
     review_rating_l:"Ta note", review_comment_l:"Ton avis", review_comment_ph:"Raconte ton expérience avec PeakScore...", review_submit:"Envoyer mon avis",
-    faq_eyebrow:"Questions fréquentes", faq_title:"FAQ",
-    faq1_q:"Est-ce que vous couvrez aussi le verbal / l'écrit ?", faq1_a:"Non. PeakScore est spécialisé exclusivement dans la section mathématiques/quantitative du SAT et du GRE, et dans les sections Quantitative Reasoning et Data Insights du GMAT — jamais le verbal ni l'écrit.",
-    faq3_q:"Comment fonctionne la réduction Progress Reward ?", faq3_a:"Ta progression est mesurée en points gagnés entre ton score de référence et ton dernier mock test, sur l'échelle propre à ton examen (SAT, GRE ou GMAT) — plus tu gagnes de points, plus la réduction sur le pack suivant est importante. Voir le tableau des paliers ci-dessus.",
-    faq4_q:"L'appel diagnostique est-il vraiment gratuit ?", faq4_a:"Oui, 15 à 20 minutes, sans engagement, pour évaluer ton niveau et te recommander le pack adapté.",
+    faq_eyebrow:"Questions fréquentes", faq_title:"FAQ", faq_intro:"Une question qui n'est pas listée ? Pose-la pendant l'appel diagnostique gratuit.",
+    faq_cat1:"Programme &amp; format", faq_cat2:"Tarifs &amp; paiement", faq_cat3:"Mock tests &amp; Progress Reward", faq_cat4:"Garanties &amp; admissions",
     faq_defs_q:"C'est quoi le SAT, le GMAT et le GRE ?", faq_defs_a:"Trois examens standardisés utilisés dans les admissions académiques. Le <b>SAT</b> est utilisé pour l'admission en licence (bachelor) dans les universités américaines, principalement par des lycéens. Le <b>GMAT</b> est utilisé pour l'admission en MBA et dans d'autres masters en business school. Le <b>GRE</b> est utilisé pour l'admission en master ou doctorat, dans la plupart des filières, aux États-Unis et dans de nombreux pays.",
-    faq5_q:"En quoi un bon score au SAT, au GMAT ou au GRE fait vraiment la différence ?", faq5_a:"Un bon score pèse directement dans le dossier : au SAT il conditionne l'accès aux universités les plus sélectives et l'obtention de bourses au mérite ; au GMAT il influence l'admission dans les meilleurs MBA et ton profil salarial à la sortie ; au GRE il conditionne l'accès aux masters/doctorats et aux financements de recherche. Dans les trois cas, quelques dizaines de points peuvent changer la liste des écoles accessibles.",
+    faq1_q:"Quelles sections d'examen couvrez-vous ?", faq1_a:"PeakScore est spécialisé exclusivement dans la section mathématiques/quantitative du SAT et du GRE, et dans les sections Quantitative Reasoning et Data Insights du GMAT — jamais le verbal ni l'écrit.",
+    faq_format_q:"Est-ce de l'accompagnement en groupe ou individuel ?", faq_format_a:"100% individuel, à tous les niveaux de pack — il n'y a pas d'option en groupe chez PeakScore.",
+    faq_mode_q:"En présentiel ou en ligne ?", faq_mode_a:"Les deux : présentiel à Rabat et à Casablanca, et en ligne pour les élèves situés ailleurs.",
+    faq_duration_q:"Combien de temps dure une préparation ?", faq_duration_a:"Ça dépend du pack et de ton rythme : en général entre 4 et 10 semaines, selon le nombre de séances par semaine et ta date d'examen.",
+    faq5_q:"En quoi un bon score au SAT, au GMAT ou au GRE fait vraiment la différence ?", faq5_a:"Un bon score pèse directement dans le dossier : au SAT il conditionne l'accès aux universités les plus sélectives et l'obtention de bourses au mérite ; au GMAT il influence l'admission dans les meilleurs MBA et ton profil salarial à la sortie ; au GRE il conditionne l'accès aux masters/doctorats et aux financements de recherche.",
+    faq_price1_q:"Pourquoi n'y a-t-il pas de prix affiché ?", faq_price1_a:"Le prix exact dépend de ton niveau de départ, de ton objectif de score et de ta deadline — il n'y a pas de tarif générique qui aurait du sens pour tout le monde. Il t'est communiqué en détail lors de ton appel diagnostique gratuit.",
+    faq_price2_q:"Comment je connais le prix, alors ?", faq_price2_a:"Réserve ton appel diagnostique gratuit : on y évalue ton niveau et ton objectif, puis on te propose le pack adapté avec son tarif précis, sans engagement.",
+    faq_price3_q:"Pourquoi le prix varie-t-il selon l'examen ?", faq_price3_a:"SAT, GRE et GMAT n'ont pas le même public : le GMAT vise des candidats MBA avec un ROI salarial plus direct, ce qui se reflète dans les tarifs.",
+    faq_payment_q:"Comment se passe le paiement ?", faq_payment_a:"Après ton appel diagnostique, tu reçois une offre personnalisée avec un lien de paiement sécurisé pour confirmer ton pack.",
+    faq4_q:"L'appel diagnostique est-il vraiment gratuit ?", faq4_a:"Oui, 1 heure, sans engagement, pour évaluer ton niveau et te recommander le pack adapté.",
+    faq_mocktest_q:"Comment fonctionnent les mock tests ?", faq_mocktest_a:"Tu passes un mock test de référence avant ton premier pack, puis un nouveau mock test à la fin de chaque pack, pour mesurer ta progression réelle en points sur l'échelle de ton examen.",
+    faq3_q:"Comment fonctionne la réduction Progress Reward ?", faq3_a:"Ta progression est mesurée en points gagnés entre ton score de référence et ton dernier mock test, sur l'échelle propre à ton examen (SAT, GRE ou GMAT) — plus tu gagnes de points, plus la réduction sur le pack suivant est importante. Voir le tableau des paliers sur la page Tarifs.",
+    faq_scores_q:"Qui saisit les scores dans mon suivi ?", faq_scores_a:"C'est ton tuteur qui enregistre ton score après chaque mock test, pour garantir un suivi fiable et cohérent d'un test à l'autre.",
+    faq_guarantee_q:"Y a-t-il une garantie de score ?", faq_guarantee_a:"Oui, avec le Pack Elite : si tu n'atteins pas ton score cible fixé lors de l'appel diagnostique, tu bénéficies de séances supplémentaires gratuites jusqu'à l'atteindre.",
+    faq_admissions_q:"Aidez-vous aussi pour les candidatures ?", faq_admissions_a:"Oui, avec le Pack Elite : une consultation stratégie de candidature et une relecture d'essai/personal statement sont incluses.",
+    faq_switch_q:"Puis-je changer de pack en cours de route ?", faq_switch_a:"Oui, tu peux passer à un pack supérieur à tout moment — c'est d'ailleurs ce qui déclenche la réduction Progress Reward si tes résultats ont progressé.",
+    faq_cta_title:"Encore une question ?", faq_cta_sub:"1 heure avec le fondateur pour tout clarifier, gratuitement.", faq_cta_btn:"Réserver un appel →",
     foot_contact_eyebrow:"Nous contacter",
     loc_presential:"Présentiel : Rabat &amp; Casablanca", loc_online:"En ligne : partout ailleurs",
     about_eyebrow:"Le fondateur", about_title:"Un tuteur, une spécialité : les maths",
@@ -591,12 +598,12 @@ const translations = {
     prog_gre_h:"Quantitative Reasoning (GRE)", prog_gre_p:"Problem solving, quantitative comparisons, and data analysis to aim for a competitive grad-school score.",
     prog_more:"See the packs",
     how_eyebrow:"The journey", how_title:"How it works",
-    how1_h:"Free diagnostic call", how1_p:"15–20 min to assess your level and goal.",
+    how1_h:"Free diagnostic call", how1_p:"1 hour to assess your level and goal.",
     how2_h:"We assess your level", how2_p:"A baseline mock test to measure your starting point.",
     how3_h:"Personalized pack", how3_p:"We recommend the pack that fits your goal.",
     how4_h:"You progress, you're rewarded", how4_p:"Every measured improvement unlocks a discount going forward.",
     packs_eyebrow:"100% one-on-one tutoring", packs_title:"Our packs",
-    packs_lead:"The full curriculum (methodology + advanced strategies) is identical across all three packs. What changes is the guarantee, responsiveness, and support — never the content taught.",
+    packs_lead:"The full curriculum (methodology + advanced strategies) is identical across all three packs. What changes is the guarantee, responsiveness, and support — never the content taught. Pricing is personalized and will be shared during your free diagnostic call.",
     pack1_h:"Starter", pack1_from:"A great way to start",
     pack1_hours:"10h of tutoring included", pack1_f1:"1-on-1 tutoring, full math curriculum", pack1_f2:"3 official mock tests included",
     pack1_f3:"Access to the resource library", pack1_f4:"Direct messaging with your tutor",
@@ -607,12 +614,12 @@ const translations = {
     pack3_hours:"30h of tutoring included", pack3_f1:"Everything in Advanced", pack3_f2:"Score guarantee: free sessions until you hit your target",
     pack3_f3:"Admissions support + essay review", pack3_f4:"Full exam-day simulation",
     pack_cta:"Start with a call",
-    ppb_label:"Indicative ranges", price_note:"Starting-from prices. The exact price and recommended pack are confirmed during your free diagnostic call.",
+    pack_priceinfo:"Price shared during the diagnostic call", price_note:"No prices are shown here: each rate is calculated based on your level, your goal, and your deadline, and is shared with you in detail during your free diagnostic call.",
     reward_eyebrow:"Progress Reward", reward_title:"Your progress saves you money",
     reward_lead:"Before your first pack, you take a baseline mock test. At the end of each pack, a new mock test measures your real point improvement, on your exam's scale.",
     reward_th_tier:"Tier", reward_th_disc:"Discount", reward_row1:"Tier 1", reward_row2:"Tier 2", reward_row3:"Tier 3",
     book_eyebrow:"First step", book_title:"Book your diagnostic call",
-    book_lead:"Free, 15 to 20 minutes, to assess your level and recommend the right pack.",
+    book_lead:"Free, 1 hour, to assess your level and recommend the right pack.",
     book_card1_h:"Free diagnostic call", book_card1_p:"We'll discuss your goal, target exam, and exam date.",
     book_avail:"Open 7 days a week, 9am–9pm",
     res_eyebrow:"Results by exam", res_title:"Same level of excellence, three different scales", testi_subhead:"Testimonials",
@@ -631,12 +638,26 @@ const translations = {
     review_title:"Leave your own review", review_lead:"PeakScore student? Share your experience — your review could be published here, alongside the others.",
     review_name_l:"First name + initial", review_exam_l:"Exam", review_pack_l:"Pack taken", review_score_l:"Score before → after",
     review_rating_l:"Your rating", review_comment_l:"Your review", review_comment_ph:"Tell us about your experience with PeakScore...", review_submit:"Send my review",
-    faq_eyebrow:"Frequently asked questions", faq_title:"FAQ",
-    faq1_q:"Do you also cover verbal / writing?", faq1_a:"No. PeakScore specializes exclusively in the math/quantitative section of the SAT and GRE, and in the Quantitative Reasoning and Data Insights sections of the GMAT — never verbal or writing.",
-    faq3_q:"How does the Progress Reward discount work?", faq3_a:"Your improvement is measured in points gained between your baseline score and your latest mock test, on the scale specific to your exam (SAT, GRE, or GMAT) — the more points you gain, the bigger the discount on your next pack. See the tier table above.",
-    faq4_q:"Is the diagnostic call really free?", faq4_a:"Yes, 15 to 20 minutes, no commitment, to assess your level and recommend the right pack.",
+    faq_eyebrow:"Frequently asked questions", faq_title:"FAQ", faq_intro:"Have a question that's not listed? Ask it during the free diagnostic call.",
+    faq_cat1:"Program &amp; format", faq_cat2:"Pricing &amp; payment", faq_cat3:"Mock tests &amp; Progress Reward", faq_cat4:"Guarantees &amp; admissions",
     faq_defs_q:"What are the SAT, GMAT, and GRE?", faq_defs_a:"Three standardized tests used in academic admissions. The <b>SAT</b> is used for undergraduate admission at US universities, mainly by high school students. The <b>GMAT</b> is used for admission to MBA and other business school master's programs. The <b>GRE</b> is used for admission to master's and PhD programs, across most fields, in the US and many other countries.",
-    faq5_q:"How does a strong SAT, GMAT, or GRE score actually make a difference?", faq5_a:"A strong score carries real weight: on the SAT it shapes access to the most selective universities and merit scholarships; on the GMAT it influences admission to top MBA programs and your future salary profile; on the GRE it shapes access to master's/PhD programs and research funding. In all three cases, a few dozen points can change which schools are within reach.",
+    faq1_q:"Which exam sections do you cover?", faq1_a:"PeakScore specializes exclusively in the math/quantitative section of the SAT and GRE, and in the Quantitative Reasoning and Data Insights sections of the GMAT — never verbal or writing.",
+    faq_format_q:"Is it group or one-on-one tutoring?", faq_format_a:"100% one-on-one, at every pack level — there's no group option at PeakScore.",
+    faq_mode_q:"In person or online?", faq_mode_a:"Both: in person in Rabat and Casablanca, and online for students located elsewhere.",
+    faq_duration_q:"How long does a prep program last?", faq_duration_a:"It depends on the pack and your pace: generally between 4 and 10 weeks, depending on sessions per week and your exam date.",
+    faq5_q:"How does a strong SAT, GMAT, or GRE score actually make a difference?", faq5_a:"A strong score carries real weight: on the SAT it shapes access to the most selective universities and merit scholarships; on the GMAT it influences admission to top MBA programs and your future salary profile; on the GRE it shapes access to master's/PhD programs and research funding.",
+    faq_price1_q:"Why isn't there a price shown?", faq_price1_a:"The exact price depends on your starting level, your target score, and your deadline — there's no generic rate that would make sense for everyone. It's shared with you in detail during your free diagnostic call.",
+    faq_price2_q:"So how do I find out the price?", faq_price2_a:"Book your free diagnostic call: we assess your level and goal, then recommend the right pack with its exact price, no commitment.",
+    faq_price3_q:"Why does the price vary by exam?", faq_price3_a:"SAT, GRE, and GMAT don't share the same audience: GMAT targets MBA candidates with a more direct salary ROI, which is reflected in pricing.",
+    faq_payment_q:"How does payment work?", faq_payment_a:"After your diagnostic call, you receive a personalized offer with a secure payment link to confirm your pack.",
+    faq4_q:"Is the diagnostic call really free?", faq4_a:"Yes, 1 hour, no commitment, to assess your level and recommend the right pack.",
+    faq_mocktest_q:"How do mock tests work?", faq_mocktest_a:"You take a baseline mock test before your first pack, then a new mock test at the end of each pack, to measure your real point improvement on your exam's scale.",
+    faq3_q:"How does the Progress Reward discount work?", faq3_a:"Your improvement is measured in points gained between your baseline score and your latest mock test, on the scale specific to your exam (SAT, GRE, or GMAT) — the more points you gain, the bigger the discount on your next pack. See the tier table on the Pricing page.",
+    faq_scores_q:"Who enters the scores in my tracking?", faq_scores_a:"Your tutor logs your score after each mock test, to keep tracking reliable and consistent from one test to the next.",
+    faq_guarantee_q:"Is there a score guarantee?", faq_guarantee_a:"Yes, with the Elite Pack: if you don't reach the target score set during your diagnostic call, you get extra coaching sessions for free until you do.",
+    faq_admissions_q:"Do you help with applications too?", faq_admissions_a:"Yes, with the Elite Pack: an application-strategy consultation and an essay/personal statement review are included.",
+    faq_switch_q:"Can I switch packs partway through?", faq_switch_a:"Yes, you can move up to a higher pack at any time — that's actually what triggers the Progress Reward discount if your results have improved.",
+    faq_cta_title:"Still have a question?", faq_cta_sub:"1 hour with the founder to clarify everything, for free.", faq_cta_btn:"Book a call →",
     foot_contact_eyebrow:"Get in touch",
     loc_presential:"In person: Rabat &amp; Casablanca", loc_online:"Online: everywhere else",
     about_eyebrow:"The founder", about_title:"One tutor, one specialty: math",
